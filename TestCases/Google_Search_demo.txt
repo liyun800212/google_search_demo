@@ -1,0 +1,33 @@
+*** Settings ***
+Library           Selenium2Library
+Test Setup  Open Browser  https://www.google.com    googlechrome
+Test Teardown  Close Browser
+
+
+*** Test Cases ***
+The 1st Google Search Test Case
+    [Documentation]    This the first test case for google search
+    # Open Browser    https://www.google.com    googlechrome
+    #Input Text    name:q    brilliantearth
+    #Sleep    5s
+    #Click Element    name:btnK
+    Input Search Value And Then Click Search Button  brilliantearth
+    Wait Until Page Contains    https://www.brilliantearth.com/
+    # Close Browser
+
+The 2nd Google Search Test Case
+    [Documentation]    This the second test case for google search
+    # Open Browser    https://www.google.com    googlechrome
+#    Input Text    name:q    Bluenile
+#    Sleep    5s
+#    Click Element    name:btnK
+    Input search value and then click search button  bluenile
+    Wait Until Page Contains    https://www.bluenile.com/
+    # Close Browser
+
+*** Keywords ***
+Input search value and then click search button
+    [Arguments]  ${search_keyword}
+    Input Text  name:q  ${search_keyword}
+    Sleep  5s
+    Click Element  name:btnK
