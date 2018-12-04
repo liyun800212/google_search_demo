@@ -3,6 +3,9 @@ Library           Selenium2Library
 Test Setup  Open Browser  https://www.google.com    googlechrome
 Test Teardown  Close Browser
 
+*** Settings ***
+${URL}  https://www.google.com
+${BROWSERS}  googlechrome
 
 *** Test Cases ***
 The 1st Google Search Test Case
