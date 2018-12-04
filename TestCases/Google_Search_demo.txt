@@ -1,7 +1,10 @@
 *** Settings ***
 Library           Selenium2Library
+Library     OperatingSystem
+Suite Setup  Setup chromedriver
 Test Setup  Open Browser  ${URL}    ${BROWSERS}
 Test Teardown  Close Browser
+
 
 *** Variables ***
 ${URL}  https://www.google.com
@@ -34,4 +37,7 @@ Input search value and then click search button
     Input Text  name:q  ${search_keyword}
     Sleep  5s
     Click Element  name:btnK
+
+Setup chromedriver
+  Set Environment Variable  webdriver.chrome.driver  /usr/local/bin/chromedriver
 
