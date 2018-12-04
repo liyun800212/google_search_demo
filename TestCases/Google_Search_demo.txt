@@ -1,9 +1,9 @@
 *** Settings ***
 Library           Selenium2Library
-Test Setup  Open Browser  https://www.google.com    googlechrome
+Test Setup  Open Browser  ${URL}    ${BROWSERS}
 Test Teardown  Close Browser
 
-*** Settings ***
+*** Variables ***
 ${URL}  https://www.google.com
 ${BROWSERS}  googlechrome
 
@@ -34,3 +34,4 @@ Input search value and then click search button
     Input Text  name:q  ${search_keyword}
     Sleep  5s
     Click Element  name:btnK
+
