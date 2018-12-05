@@ -1,7 +1,7 @@
 *** Settings ***
-Library           Selenium2Library
+Library     Selenium2Library
 Library     OperatingSystem
-Suite Setup  Setup chromedriver
+#Suite Setup  Setup chromedriver
 Test Setup  Open Browser  ${URL}    ${BROWSERS}
 Test Teardown  Close Browser
 
@@ -9,7 +9,11 @@ Test Teardown  Close Browser
 *** Variables ***
 ${URL}  https://www.google.com
 ${BROWSERS}  googlechrome
+Name  webdriver.chrome.driver
+Value /usr/local/bin/chromedriver
 
+name: PATH
+values: ......;C:\chromedriver_win32\chromedriver.exe
 *** Test Cases ***
 The 1st Google Search Test Case
     [Documentation]    This the first test case for google search
@@ -31,6 +35,11 @@ The 2nd Google Search Test Case
     Wait Until Page Contains    https://www.bluenile.com/
     # Close Browser
 
+The 2nd Google Search Test Case
+    Input search value and then click search button  joomla
+    Wait Until Page Contains    https://www.joomla.org/
+
+
 *** Keywords ***
 Input search value and then click search button
     [Arguments]  ${search_keyword}
@@ -38,6 +47,6 @@ Input search value and then click search button
     Sleep  5s
     Click Element  name:btnK
 
-Setup chromedriver
-  Set Environment Variable  webdriver.chrome.driver  /usr/local/bin/chromedriver
+#Setup chromedriver
+#  Set Environment Variable  webdriver.chrome.driver  /usr/local/bin/chromedriver
 
